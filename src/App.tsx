@@ -7,6 +7,7 @@ import {
 	Input,
 	Cycles,
 	DefaultButton,
+	Footer,
 } from './components/index';
 
 import './styles/global.css';
@@ -47,9 +48,15 @@ export const App = () => {
 						<Cycles />
 					</div>
 					<div>
-						<DefaultButton icon={<CirclePlayIcon />} color='red' />
+						<DefaultButton
+							icon={<CirclePlayIcon />}
+							color='green'
+						/>
 					</div>
 				</form>
+			</Container>
+			<Container>
+				<Footer />
 			</Container>
 		</>
 	);

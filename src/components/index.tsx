@@ -5,3 +5,4 @@ export { CountDown } from './CountDown/CountDown';
 export { Input } from './Input/Input';
 export { Cycles } from './Cycles/Cycles';
 export { DefaultButton } from './DefaultButton/DefaultButton';
+export { Footer } from './Footer/Footer';

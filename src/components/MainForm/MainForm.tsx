@@ -1,19 +1,18 @@
-import { Input, Cycles, DefaultButton } from '../index';
-import { CirclePlayIcon, StopCircleIcon } from 'lucide-react';
-import { useRef } from 'react';
-import type { TaskModel } from '../../models/TaskModel';
-import { useTaskContext } from '../../contexts/TaskContext';
-import { getNextCycle } from '../../utils/getNextCycle';
-import { getNextCycleType } from '../../utils/getNextCycleType';
-import { getFormattedSecondsRemaining } from '../../utils/getFormattedSecondsRemaining';
+import { Input, Cycles, DefaultButton } from "../index";
+import { CirclePlayIcon, StopCircleIcon } from "lucide-react";
+import { useRef } from "react";
+import type { TaskModel } from "../../models/TaskModel";
+import { useTaskContext } from "../../contexts/TaskContext";
+import { getNextCycle } from "../../utils/getNextCycle";
+import { getNextCycleType } from "../../utils/getNextCycleType";
+import { TaskActionTypes } from "../../contexts/TaskContext/taskActions";
+import { Tips } from "../Tips/Tips";
 
 export function MainForm() {
-	const { state, setState } = useTaskContext();
+	const { state, dispatch } = useTaskContext();
 
-	// Cycles
 	const nextCycle = getNextCycle(state.currentCycle);
 	const nextCycleType = getNextCycleType(nextCycle);
-
 	const taskNameInput = useRef<HTMLInputElement>(null);
 
 	const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -24,7 +23,7 @@ export function MainForm() {
 		const taskName = taskNameInput.current.value.trim();
 
 		if (!taskName) {
-			alert('Enter the task name');
+			alert("Enter the task name");
 			return;
 		}
 
@@ -38,85 +37,63 @@ export function MainForm() {
 			type: nextCycleType,
 		};
 
-		setState(prevState => {
-			return {
-				...prevState,
-				tasks: [...prevState.tasks, newTask],
-				secondsRemaining: newTask.duration * 60,
-				formattedSecondsRemaining: getFormattedSecondsRemaining(
-					newTask.duration * 60,
-				),
-				activeTask: newTask,
-				currentCycle: nextCycle,
-				config: { ...prevState.config },
-			};
-		});
-
-		console.log(taskName);
+		dispatch({ type: TaskActionTypes.START_TASK, payload: newTask });
 	};
 
 	function handleInterruptTask(
-		e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+		e: React.MouseEvent<HTMLButtonElement, MouseEvent>
 	) {
 		e.preventDefault();
-		setState(prevState => {
-			return {
-				...prevState,
-				secondsRemaining: 0,
-				formattedSecondsRemaining: '00:00',
-				activeTask: null,
-				tasks: prevState.tasks.map(task => {
-					if (
-						prevState.activeTask &&
-						prevState.activeTask.id === task.id
-					)
-						return { ...task, interruptDate: Date.now() };
-					return task;
-				}),
-			};
-		});
+		dispatch({ type: TaskActionTypes.INTERRUPT_TASK });
 	}
 
 	return (
 		<>
-			<form onSubmit={handleFormSubmit} className='form' action=''>
-				<div className='formRow'>
+			<form
+				onSubmit={handleFormSubmit}
+				className="form"
+				action=""
+			>
+				<div className="formRow">
 					<Input
-						labelText='Task:'
-						id='myInput'
-						type='text'
-						title='title'
-						placeholder='Type here'
+						labelText="Task:"
+						id="myInput"
+						type="text"
+						title="title"
+						placeholder="Type here"
 						ref={taskNameInput}
 						disabled={!!state.activeTask}
 					/>
 				</div>
-				<div className='formRow'>
-					<p>Lorem ipsum dolor sit amet.</p>
+				<div className="formRow">
+					<Tips
+						state={state}
+						nextCycleType={nextCycleType}
+					/>
 				</div>
 				{state.currentCycle > 0 && (
-					<div className='formRow'>
+					<div className="formRow">
 						<Cycles />
 					</div>
 				)}
 				<div>
 					{!state.activeTask ? (
 						<DefaultButton
-							aria-label='initialize new task'
-							title='initialize new task'
+							aria-label="initialize new task"
+							title="initialize new task"
 							icon={<CirclePlayIcon />}
-							type='submit'
-							key='submit button'
+							type="submit"
+							key="submit button"
 						/>
 					) : (
 						<DefaultButton
 							icon={<StopCircleIcon />}
-							aria-label='interrupt current task'
-							title='interrupt current task'
-							color='red'
-							type='button'
+							aria-label="interrupt current task"
+							title="interrupt current task"
+							color="red"
+							type="button"
 							onClick={handleInterruptTask}
-							key='interrupt button'
+							key="interrupt button"
 						/>
 					)}
 				</div>

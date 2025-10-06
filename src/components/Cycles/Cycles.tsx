@@ -1,7 +1,7 @@
-import { useTaskContext } from '../../contexts/TaskContext';
-import { getNextCycle } from '../../utils/getNextCycle';
-import { getNextCycleType } from '../../utils/getNextCycleType';
-import styles from './styles.module.css';
+import { useTaskContext } from "../../contexts/TaskContext";
+import { getNextCycle } from "../../utils/getNextCycle";
+import { getNextCycleType } from "../../utils/getNextCycleType";
+import styles from "./styles.module.css";
 
 export const Cycles = () => {
 	const { state } = useTaskContext();
@@ -9,12 +9,10 @@ export const Cycles = () => {
 	const cycleStep = Array(state.currentCycle).fill(null);
 
 	const cycleDescriptionMap = {
-		workTime: 'focus',
-		shortBreakTime: 'short break',
-		longBreakTime: 'long break',
+		workTime: "focus",
+		shortBreakTime: "short break",
+		longBreakTime: "long break",
 	};
-
-	console.log(cycleStep);
 
 	return (
 		<>

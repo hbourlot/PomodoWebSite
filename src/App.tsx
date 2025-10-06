@@ -1,11 +1,18 @@
 import './styles/global.css';
 import './styles/theme.css';
-import { Home } from './pages/Home/Home';
+import { NotFound, Home, AboutPomodoro } from './pages/index';
+import { TaskContextProvider } from './contexts/TaskContext/index';
+
 
 export const App = () => {
+
 	return (
 		<>
-			<Home />
+			<TaskContextProvider>
+				<Home />
+				{/* <NotFound /> */}
+				{/* {<AboutPomodoro />} */}
+			</TaskContextProvider>
 		</>
 	);
 };

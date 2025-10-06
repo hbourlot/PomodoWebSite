@@ -1,6 +1,6 @@
-.container {
+.heading {
 	display: flex;
-	justify-content: center;
 	align-items: center;
-	text-align: center;
+	justify-content: center;
+	gap: 2.4rem;
 }

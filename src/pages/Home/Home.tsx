@@ -1,7 +1,7 @@
-import { Container, CountDown, MainForm } from '../../components';
 import { MainTemplate } from '../../templates/MainTemplate/MainTemplate';
+import { Container, CountDown, MainForm } from '../../components/index';
 
-export const Home = () => {
+export function Home() {
 	return (
 		<>
 			<MainTemplate>
@@ -15,4 +15,4 @@ export const Home = () => {
 			</MainTemplate>
 		</>
 	);
-};
+}

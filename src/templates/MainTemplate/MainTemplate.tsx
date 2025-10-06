@@ -1,4 +1,4 @@
-import { Container, Menu, Logo, Footer } from '../../components/index.js';
+import { Logo, Container, Menu, Footer } from '../../components/index';
 
 type MainTemplateProps = {
 	children: React.ReactNode;
@@ -23,3 +23,5 @@ export const MainTemplate = ({ children }: MainTemplateProps) => {
 		</>
 	);
 };
+
+export default MainTemplate;

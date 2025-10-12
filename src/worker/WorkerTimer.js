@@ -1,7 +1,11 @@
+let isRunning = false;
+
 onmessage = (e) => {
+	if (isRunning) return;
+
+	isRunning = true;
 	let { secondsRemaining } = e.data;
 
-	// ✅ Immediately send the starting value (e.g., 1500)
 	self.postMessage(secondsRemaining);
 
 	function tick() {
@@ -11,5 +15,5 @@ onmessage = (e) => {
 		setTimeout(tick, 1000);
 	}
 
-	setTimeout(tick, 1000);
+	tick();
 };

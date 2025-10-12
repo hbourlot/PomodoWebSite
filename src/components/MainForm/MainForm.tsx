@@ -7,6 +7,7 @@ import { getNextCycle } from "../../utils/getNextCycle";
 import { getNextCycleType } from "../../utils/getNextCycleType";
 import { TaskActionTypes } from "../../contexts/TaskContext/taskActions";
 import { Tips } from "../Tips/Tips";
+import { toastWrapper } from "../../adapters/toastWrapper";
 
 export function MainForm() {
 	const { state, dispatch } = useTaskContext();
@@ -23,10 +24,9 @@ export function MainForm() {
 		const taskName = taskNameInput.current.value.trim();
 
 		if (!taskName) {
-			alert("Enter the task name");
+			toastWrapper.warn();
 			return;
 		}
-
 		const newTask: TaskModel = {
 			id: Date.now().toString(),
 			name: taskName,
@@ -36,7 +36,7 @@ export function MainForm() {
 			duration: state.config[nextCycleType],
 			type: nextCycleType,
 		};
-
+		toastWrapper.start();
 		dispatch({ type: TaskActionTypes.START_TASK, payload: newTask });
 	};
 
@@ -44,6 +44,7 @@ export function MainForm() {
 		e: React.MouseEvent<HTMLButtonElement, MouseEvent>
 	) {
 		e.preventDefault();
+		toastWrapper.interrupt();
 		dispatch({ type: TaskActionTypes.INTERRUPT_TASK });
 	}
 
@@ -52,7 +53,6 @@ export function MainForm() {
 			<form
 				onSubmit={handleFormSubmit}
 				className="form"
-				action=""
 			>
 				<div className="formRow">
 					<Input

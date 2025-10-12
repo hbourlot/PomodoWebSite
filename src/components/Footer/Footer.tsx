@@ -1,14 +1,20 @@
-import React from 'react';
-import styles from './styles.module.css';
+import React from "react";
+import styles from "./styles.module.css";
+import { Link } from "react-router-dom";
 
 export function Footer() {
 	return (
 		<>
 			<div className={styles.footer}>
-				<a href='' className={styles.white}>Pomodoro Tech</a>
-				<a href=''>
+				<Link
+					to="/about"
+					className={styles.white}
+				>
+					Pomodoro Tech 🍒
+				</Link>
+				<Link to="/about">
 					Chronos Pomodoro &copy; {new Date().getFullYear()}
-				</a>
+				</Link>
 			</div>
 		</>
 	);

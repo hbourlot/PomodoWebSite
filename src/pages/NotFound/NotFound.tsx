@@ -1,7 +1,8 @@
-import MainTemplate from '../../templates/MainTemplate/MainTemplate';
-import { Heading } from '../../components/Heading/Heading';
-import { Container } from '../../components/Container/Container';
-import { GenericHtml } from '../../components/GenericHtml/GenericHtml';
+import MainTemplate from "../../templates/MainTemplate/MainTemplate";
+import { Heading } from "../../components/Heading/Heading";
+import { Container } from "../../components/Container/Container";
+import { GenericHtml } from "../../components/GenericHtml/GenericHtml";
+import { RouterLink } from "../../components";
 
 export function NotFound() {
 	return (
@@ -18,10 +19,10 @@ export function NotFound() {
 					<p>
 						But relax, you're not lost in space (yet). You can
 						safely go back to the
-						<a href='/'> main page</a> or{' '}
-						<a href='/history'>the history</a> — or you can stay
-						here and pretend you’ve found a secret page that only
-						the coolest explorers can access. 🧭✨
+						<RouterLink href="/"> main page</RouterLink> or{" "}
+						<RouterLink href="/history">the history</RouterLink> —
+						or you can stay here and pretend you’ve found a secret
+						page that only the coolest explorers can access. 🧭✨
 					</p>
 					<p>
 						If you think this page should exist (or if you’d like to

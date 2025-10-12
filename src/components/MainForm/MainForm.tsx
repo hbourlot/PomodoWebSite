@@ -15,6 +15,7 @@ export function MainForm() {
 	const nextCycle = getNextCycle(state.currentCycle);
 	const nextCycleType = getNextCycleType(nextCycle);
 	const taskNameInput = useRef<HTMLInputElement>(null);
+	const lastTaskName = state.tasks[state.tasks.length - 1]?.name || "";
 
 	const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
@@ -63,6 +64,7 @@ export function MainForm() {
 						placeholder="Type here"
 						ref={taskNameInput}
 						disabled={!!state.activeTask}
+						defaultValue={lastTaskName}
 					/>
 				</div>
 				<div className="formRow">

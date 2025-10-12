@@ -1,20 +1,20 @@
 import React from "react";
 import styles from "./styles.module.css";
-import { Link } from "react-router-dom";
+import { RouterLink } from "../RouterLink/RouterLink";
 
 export function Footer() {
 	return (
 		<>
 			<div className={styles.footer}>
-				<Link
-					to="/about"
+				<RouterLink
+					href="/about"
 					className={styles.white}
 				>
 					Pomodoro Tech 🍒
-				</Link>
-				<Link to="/about">
+				</RouterLink>
+				<RouterLink href="/about">
 					Chronos Pomodoro &copy; {new Date().getFullYear()}
-				</Link>
+				</RouterLink>
 			</div>
 		</>
 	);

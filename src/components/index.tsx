@@ -9,3 +9,4 @@ export { Footer } from "./Footer/Footer";
 export { MainForm } from "./MainForm/MainForm";
 export { Heading } from "./Heading/Heading";
 export { Tips } from "./Tips/Tips";
+export { RouterLink } from "./RouterLink/RouterLink";

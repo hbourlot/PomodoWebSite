@@ -1,6 +1,6 @@
-import { GenericHtml } from '../../components/GenericHtml/GenericHtml';
-import { Heading, Container } from '../../components/index';
-import MainTemplate from '../../templates/MainTemplate/MainTemplate';
+import { GenericHtml } from "../../components/GenericHtml/GenericHtml";
+import { Heading, Container, RouterLink } from "../../components/index";
+import MainTemplate from "../../templates/MainTemplate/MainTemplate";
 
 export function AboutPomodoro() {
 	return (
@@ -12,14 +12,17 @@ export function AboutPomodoro() {
 					<p>
 						The Pomodoro Technique is a productivity method created
 						by
-						<strong>Francesco Cirillo</strong>. It consists of
+						<strong> Francesco Cirillo</strong>. It consists of
 						dividing work into time blocks (the famous "Pomodoros")
 						interspersed with breaks. The goal is to stay fully
 						focused for a short period while ensuring rest to avoid
 						mental fatigue.
 					</p>
 
-					<img src='https://placehold.co/1920x1080' alt='' />
+					<img
+						src="https://placehold.co/1920x1080"
+						alt=""
+					/>
 
 					<h2>How does the traditional Pomorodo works?</h2>
 
@@ -29,7 +32,7 @@ export function AboutPomodoro() {
 							on.
 						</li>
 						<li>
-							<strong>2. Work on it for 25 minutes</strong>{' '}
+							<strong>2. Work on it for 25 minutes</strong>{" "}
 							without interruptions.
 						</li>
 						<li>
@@ -57,9 +60,9 @@ export function AboutPomodoro() {
 					<h3>⚙️ Time customization</h3>
 					<p>
 						You can set your own focus time, short breaks, and long
-						breaks! Just go to the{' '}
-						<a href='/settings'>settings page</a> and adjust the
-						minutes however you prefer.
+						breaks! Just go to the{" "}
+						<RouterLink href="/settings">settings page</RouterLink>{" "}
+						and adjust the minutes however you prefer.
 					</p>
 
 					<h3>🔁 Organized cycles in sequence</h3>
@@ -103,9 +106,9 @@ export function AboutPomodoro() {
 					<h3>📊 Automatic history</h3>
 					<p>
 						All your completed cycles and tasks are saved in your
-						<a href='/history'> history</a>, marked as completed or
-						interrupted. That way, you can track your progress over
-						time.
+						<RouterLink href="/history"> history</RouterLink>,
+						marked as completed or interrupted. That way, you can
+						track your progress over time.
 					</p>
 
 					<h2>Why use Chronos Pomodoro?</h2>
@@ -118,8 +121,8 @@ export function AboutPomodoro() {
 
 					<p>
 						<strong>Ready to focus?</strong> Let’s go back to the
-						<a href='/'> home page</a> and start your Pomodoros!
-						🍅🚀
+						<RouterLink href="/"> home page</RouterLink> and start
+						your Pomodoros! 🍅🚀
 					</p>
 
 					<p>

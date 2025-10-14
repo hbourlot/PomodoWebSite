@@ -11,7 +11,7 @@ export function ToastWrapper({ children }: toastWrapperProps) {
 			{children}
 			<ToastContainer
 				position="top-center"
-				autoClose={10000}
+				autoClose={2000}
 				hideProgressBar={false}
 				closeOnClick={false}
 				rtl={false}

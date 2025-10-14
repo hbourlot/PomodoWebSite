@@ -21,7 +21,7 @@ export class TimerWorkerManager {
 		this.worker.postMessage(message);
 	}
 
-	onmessage(callBack: (e: MessageEvent<any>) => void) {
+	onmessage(callBack: (e: MessageEvent<TaskStateModel>) => void) {
 		this.worker.onmessage = callBack;
 	}
 

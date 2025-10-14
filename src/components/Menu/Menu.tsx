@@ -1,12 +1,6 @@
 import { useState, useEffect } from "react";
 import styles from "./styles.module.css";
-import {
-	HistoryIcon,
-	SettingsIcon,
-	SunIcon,
-	HouseIcon,
-	MoonIcon,
-} from "lucide-react";
+import { HistoryIcon, SettingsIcon, SunIcon, HouseIcon, MoonIcon } from "lucide-react";
 import { RouterLink } from "../RouterLink/RouterLink";
 
 type availableThemes = "light" | "dark";
@@ -18,14 +12,11 @@ const themeIcon: Record<availableThemes, React.ReactNode> = {
 
 export const Menu = () => {
 	const [theme, setTheme] = useState<availableThemes>(() => {
-		let storageTheme =
-			(localStorage.getItem("theme") as availableThemes) || "dark";
+		const storageTheme = (localStorage.getItem("theme") as availableThemes) || "dark";
 		return storageTheme;
 	});
 
-	const handleThemeChange = (
-		event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
-	) => {
+	const handleThemeChange = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
 		event.preventDefault();
 		setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
 	};
@@ -42,28 +33,13 @@ export const Menu = () => {
 
 	return (
 		<nav className={styles.menu}>
-			<RouterLink
-				href="/"
-				aria-label="Go to home"
-				title="Go to home"
-				className={styles.menuLink}
-			>
+			<RouterLink href="/" aria-label="Go to home" title="Go to home" className={styles.menuLink}>
 				<HouseIcon />
 			</RouterLink>
-			<RouterLink
-				href="#"
-				aria-label="Go to history"
-				title="Go to history"
-				className={styles.menuLink}
-			>
+			<RouterLink href="/history" aria-label="Go to history" title="Go to history" className={styles.menuLink}>
 				<HistoryIcon />
 			</RouterLink>
-			<RouterLink
-				href="#"
-				arial-label="Go to settings"
-				title="Go to settings"
-				className={styles.menuLink}
-			>
+			<RouterLink href="/settings" aria-label="Go to settings" title="Go to settings" className={styles.menuLink}>
 				<SettingsIcon />
 			</RouterLink>
 			<RouterLink
@@ -71,8 +47,7 @@ export const Menu = () => {
 				aria-label="Set dark theme"
 				title="Set dark theme"
 				className={styles.menuLink}
-				onClick={handleThemeChange}
-			>
+				onClick={handleThemeChange}>
 				{/* {theme === 'dark' ? <MoonIcon /> : <SunIcon />} */}
 				{themeIcon[theme]}
 			</RouterLink>

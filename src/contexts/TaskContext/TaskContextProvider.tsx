@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useRef, useState } from "react";
+import { useEffect, useReducer, useRef } from "react";
 import { initialTaskState } from "./initialTaskState";
 import { TaskContext } from "./TaskContext";
 import { taskReducer } from "./taskReducer";
@@ -32,7 +32,8 @@ export function TaskContextProvider({ children }: TaskContextProviderProps) {
 	const playBeepRef = useRef<ReturnType<typeof loadBeep>>(null);
 
 	myWorker.onmessage((e) => {
-		const countDownSeconds = e.data;
+
+		const countDownSeconds = typeof e.data === "number" ? e.data : e.data.secondsRemaining;
 
 		if (countDownSeconds < 0) {
 			if (playBeepRef.current) {

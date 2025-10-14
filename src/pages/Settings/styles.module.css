@@ -1,0 +1,19 @@
+.formRow {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: 2.4rem;
+}
+
+.form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: 2.4rem;
+}
+
+input[type="number"] {
+	width: 16rem;
+}

@@ -8,6 +8,7 @@ import { getNextCycleType } from "../../utils/getNextCycleType";
 import { TaskActionTypes } from "../../contexts/TaskContext/taskActions";
 import { Tips } from "../Tips/Tips";
 import { toastWrapper } from "../../adapters/toastWrapper";
+import styles from "./style.module.css";
 
 export function MainForm() {
 	const { state, dispatch } = useTaskContext();
@@ -53,9 +54,8 @@ export function MainForm() {
 		<>
 			<form
 				onSubmit={handleFormSubmit}
-				className="form"
-			>
-				<div className="formRow">
+				className={styles.form}>
+				<div className={styles.formRow}>
 					<Input
 						labelText="Task:"
 						id="myInput"
@@ -67,14 +67,14 @@ export function MainForm() {
 						defaultValue={lastTaskName}
 					/>
 				</div>
-				<div className="formRow">
+				<div className={styles.formRow}>
 					<Tips
 						state={state}
 						nextCycleType={nextCycleType}
 					/>
 				</div>
 				{state.currentCycle > 0 && (
-					<div className="formRow">
+					<div className={styles.formRow}>
 						<Cycles />
 					</div>
 				)}

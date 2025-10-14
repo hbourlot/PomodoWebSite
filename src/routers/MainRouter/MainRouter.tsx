@@ -1,13 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ScrollToTop } from "../../components/ScrollToTop/ScrollToTop";
-import { Home, NotFound, AboutPomodoro } from "../../pages";
+import { Home, NotFound, AboutPomodoro, History } from "../../pages";
 import { MultiRoute } from "../../utils/MultiRoute";
-
-export const RouterPaths = {
-	HOME: ["/", "/home"],
-	ABOUT_POMODORO: "/about",
-	NOT_FOUND: "*",
-};
+import { Settings } from "../../pages/Settings/Settings";
+import { RouterPaths } from "./RouterPaths";
 
 export function MainRouter() {
 	return (
@@ -23,6 +19,14 @@ export function MainRouter() {
 					<Route
 						path={RouterPaths.ABOUT_POMODORO}
 						element={<AboutPomodoro />}
+					/>
+					<Route
+						path={RouterPaths.HISTORY}
+						element={<History />}
+					/>
+					<Route
+						path={RouterPaths.SETTINGS}
+						element={<Settings />}
 					/>
 				</Routes>
 			</BrowserRouter>

@@ -1,8 +1,13 @@
+import { useEffect } from "react";
 import { GenericHtml } from "../../components/GenericHtml/GenericHtml";
 import { Heading, Container, RouterLink } from "../../components/index";
 import MainTemplate from "../../templates/MainTemplate/MainTemplate";
 
 export function AboutPomodoro() {
+	useEffect(() => {
+		document.title = "About - Pomodoro";
+	}, []);
+
 	return (
 		<MainTemplate>
 			<Container>
